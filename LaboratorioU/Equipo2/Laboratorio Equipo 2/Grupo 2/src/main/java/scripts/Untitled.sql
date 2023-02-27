@@ -1,0 +1,1 @@
+SELECT * FROM SIU.tbl_usuario;
