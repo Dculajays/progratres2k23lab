@@ -16,19 +16,19 @@ import java.util.List;
  */
 public class daoAlumnos {
 
-    private static final String SQL_SELECT = "SELECT carnet_alumno, nombre_alumno, direccion_alumno, telefono_alumno, email_alumno FROM alumnos";
-    private static final String SQL_INSERT = "INSERT INTO alumnos(nombre_alumno, direccion_alumno, telefono_alumno, email_alumno) VALUES(?, ?, ?, ?)";
-    private static final String SQL_UPDATE = "UPDATE alumnos SET nombre_alumno=?, direccion_alumno=?, telefono_alumno=?, email_alumno=? WHERE carnet_alumno = ?";
+    private static final String SQL_SELECT = "SELECT carnet_alumno, nombre_alumno, direccion_alumno, telefono_alumno, email_alumno, estatus_alumno  FROM alumnos";
+    private static final String SQL_INSERT = "INSERT INTO alumnos(nombre_alumno, direccion_alumno, telefono_alumno, email_alumno, estatus_alumno ) VALUES(?, ?, ?, ?, ?)";
+    private static final String SQL_UPDATE = "UPDATE alumnos SET nombre_alumno=?, direccion_alumno=?, telefono_alumno=?, email_alumno=?, estatus_alumno =? WHERE carnet_alumno = ?";
     private static final String SQL_DELETE = "DELETE FROM alumnos WHERE carnet_alumno=?";
-    private static final String SQL_SELECT_NOMBRE = "SELECT carnet_alumno, nombre_alumno, direccion_alumno, telefono_alumno, email_alumno FROM alumnos WHERE nombre_alumno = ?";
-    private static final String SQL_SELECT_ID = "SELECT carnet_alumno, nombre_alumno, direccion_alumno, telefono_alumno, email_alumno FROM alumnos WHERE carnet_alumno = ?";    
+    private static final String SQL_SELECT_NOMBRE = "SELECT carnet_alumno, nombre_alumno, direccion_alumno, telefono_alumno, email_alumno, estatus_alumno FROM alumnos WHERE nombre_alumno = ?";
+    private static final String SQL_SELECT_ID = "SELECT carnet_alumno, nombre_alumno, direccion_alumno, telefono_alumno, email_alumno, estatus_alumno FROM alumnos WHERE carnet_alumno = ?";    
 
     public List<clsAlumnos> consultaAlumnos() {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
         
-        List<clsUsuario> alumnos = new ArrayList<>();
+        List<clsAlumnos> alumnos = new ArrayList<>();
         try {
             conn = Conexion.getConnection();
             stmt = conn.prepareStatement(SQL_SELECT);
@@ -37,11 +37,18 @@ public class daoAlumnos {
                 int id = rs.getInt("carnet_alumno");
                 String nombre = rs.getString("nombre_alumno");
                 String direccion = rs.getString("direccion_alumno");
-                clsUsuario usuario = new clsUsuario();
-                usuario.setIdUsuario(id);
-                usuario.setNombreUsuario(nombre);
-                usuario.setContrasenaUsuario(contrasena);
-                usuarios.add(usuario);
+                int telefono = rs.getInt("telefono_alumno");
+                String correo = rs.getString("email_alumno");
+                int estatus = rs.getInt("estatus_alumno");
+                
+                clsAlumnos alumno = new clsAlumnos();
+                alumno.setcarnet_alumno(id);
+                alumno.setnombre_alumno(nombre);
+                alumno.setdireccion_alumno(direccion);
+                alumno.settelefono_alumno(telefono);
+                alumno.setemail_alumno(correo);
+                //alumno.setestatus_alumno(estatus);
+                alumnos.add(alumno);
             }
         } catch (SQLException ex) {
             ex.printStackTrace(System.out);
@@ -50,18 +57,18 @@ public class daoAlumnos {
             Conexion.close(stmt);
             Conexion.close(conn);
         }
-        return usuarios;
+        return alumnos;
     }
-
-    public int ingresaUsuarios(clsUsuario usuario) {
+/*
+    public int ingresaAlumnos(clsAlumnos alumno) {
         Connection conn = null;
         PreparedStatement stmt = null;
         int rows = 0;
         try {
             conn = Conexion.getConnection();
             stmt = conn.prepareStatement(SQL_INSERT);
-            stmt.setString(1, usuario.getNombreUsuario());
-            stmt.setString(2, usuario.getContrasenaUsuario());
+            stmt.setString(1, alumno.getcarnet_alumno());
+            stmt.setString(2, alumno.getContrasenaUsuario());
 
             System.out.println("ejecutando query:" + SQL_INSERT);
             rows = stmt.executeUpdate();
@@ -190,5 +197,5 @@ public class daoAlumnos {
 
         //return personas;  // Si se utiliza un ArrayList
         return usuario;
-    }    
+    }    */
 }

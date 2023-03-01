@@ -16,55 +16,86 @@ public class clsAlumnos {
     private String direccion_alumno;
     private int telefono_alumno;
     private String email_alumno;
-    private int estatus_alumno;
+    private String estatus_alumno;
 
     public clsAlumnos() {
     }
     
-    public clsAlumnos(int IdAlumnos) {
+    public clsAlumnos(int carnet_alumno) {
         this.carnet_alumno = carnet_alumno;
     }    
     
-    public clsAlumnos(String nombre_alumno, String ContrasenaUsuario) {
+    public clsAlumnos(String nombre_alumno, String direccion_alumno, int telefono_alumno, String email_alumno, String estatus_alumno) {
         this.nombre_alumno = nombre_alumno;
-        this.ContrasenaUsuario = ContrasenaUsuario;
+        this.direccion_alumno = direccion_alumno;
+        this.email_alumno = email_alumno;
+        this.telefono_alumno = telefono_alumno;
+        this.estatus_alumno = estatus_alumno;
     }
     
-    public clsUsuario(int IdUsuario, String NombreUsuario, String ContrasenaUsuario) {
-        this.IdUsuario = IdUsuario;
-        this.NombreUsuario = NombreUsuario;
-        this.ContrasenaUsuario = ContrasenaUsuario;
+    public clsAlumnos(int carnet_alumno, String nombre_alumno, String direccion_alumno, int telefono_alumno, String email_alumno, String estatus_alumno) {
+        this.carnet_alumno = carnet_alumno;
+        this.nombre_alumno = nombre_alumno;
+        this.direccion_alumno = direccion_alumno;
+        this.email_alumno = email_alumno;
+        this.telefono_alumno = telefono_alumno;
+        this.estatus_alumno = estatus_alumno;
     }    
 
-    public int getIdUsuario() {
-        return IdUsuario;
+    public int getcarnet_alumno() {
+        return carnet_alumno;
     }
 
-    public void setIdUsuario(int IdUsuario) {
-        this.IdUsuario = IdUsuario;
+    public void setcarnet_alumno(int carnet_alumno) {
+        this.carnet_alumno = carnet_alumno;
     }
 
-    public String getNombreUsuario() {
-        return NombreUsuario;
+    public String getnombre_alumno() {
+        return nombre_alumno;
     }
 
-    public void setNombreUsuario(String NombreUsuario) {
-        this.NombreUsuario = NombreUsuario;
+    public void setnombre_alumno(String nombre_alumno) {
+        this.nombre_alumno = nombre_alumno;
     }
 
-    public String getContrasenaUsuario() {
-        return ContrasenaUsuario;
+    public String getdireccion_alumno() {
+        return direccion_alumno;
     }
 
-    public void setContrasenaUsuario(String ContrasenaUsuario) {
-        this.ContrasenaUsuario = ContrasenaUsuario;
+    public void setdireccion_alumno(String direccion_alumno) {
+        this.direccion_alumno = direccion_alumno;
     }
+    
+    public String getemail_alumno() {
+        return email_alumno;
+    }
+
+    public void setemail_alumno(String email_alumno) {
+        this.email_alumno = email_alumno;
+    }
+    
+    public int gettelefono_alumno() {
+        return telefono_alumno;
+    }
+
+    public void settelefono_alumno(int telefono_alumno) {
+        this.telefono_alumno = telefono_alumno;
+    }
+    
+    public String getestatus_alumno() {
+        return estatus_alumno;
+    }
+
+    public void setestatus_alumno(String estatus_alumno) {
+        this.direccion_alumno = direccion_alumno;
+    }
+    
     @Override
     public String toString() {
-        return "clsUsuario{" + "IdUsuario=" + IdUsuario + ", NombreUsuario=" + NombreUsuario + ", ContrasenaUsuario=" + ContrasenaUsuario + '}';
+        return "clsAlumnos{" + "carnet_alumno=" + carnet_alumno + ", nombre_alumno=" + nombre_alumno + ", direccion_alumno=" + direccion_alumno + ", email_alumno=" + email_alumno + ", telefono_alumno=" + telefono_alumno + ", estatus_alumno=" + estatus_alumno + '}';
     }
     //Metodos de acceso a la capa controlador
-    public clsUsuario getBuscarInformacionUsuarioPorNombre(clsUsuario usuario)
+    /*public clsUsuario getBuscarInformacionUsuarioPorNombre(clsUsuario usuario)
     {
         daoUsuario daousuario = new daoUsuario();
         return daousuario.consultaUsuariosPorNombre(usuario);
@@ -94,5 +125,25 @@ public class clsAlumnos {
     {
         daoUsuario daousuario = new daoUsuario();
         return daousuario.actualizaUsuarios(usuario);
-    }              
+    }      */        
+
+    public List<clsAlumnos> getListadoAlumnos() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public int setBorrarAlumno(clsAlumnos alumno) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public void setIngresarAlumnos(clsAlumnos alumno) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public clsAlumnos getBuscarInformacionUsuarioPorcarnet(clsAlumnos alumnos) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public void setModificarAlumnos(clsAlumnos alumnos) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
